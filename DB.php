@@ -23,7 +23,7 @@ class DB {
 						throw new \Exception('Problem with running query');
 				}
 				
-				return $stmt->fetchAll();
+				return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		}
 		//}}}
 }

@@ -41,9 +41,12 @@ function fieldMapping(\DomNodelist $fields) : array { //{{{
 function solrDocs(array $fields, array $rows) : array { //{{{
 		$docs = [];
 		
-		foreach ($row as $r) {
+		foreach ($rows as $r) {
 				$doc = new \SolrInputDocument();
 				foreach ($r as $col => $val) {
+						if ('' == (string) $val) {
+								continue;
+						}
 						$doc->addField($fields[$col], $val);
 				}
 				
