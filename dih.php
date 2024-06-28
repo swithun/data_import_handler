@@ -27,7 +27,7 @@ function dbConnectionDetails(string $url) : string { //{{{
 //}}}
 
 // turn <field column="surname" name="surname_t"/> into surname => surname_t
-function fieldMappings(\DomNodelist $fields) : array { //{{{
+function fieldMapping(\DomNodelist $fields) : array { //{{{
 		$arr = [];
 		foreach ($fields as $f) {
 				$arr[$f->getAttribute('column')] = $f->getAttribute('name');
