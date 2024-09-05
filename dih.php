@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DIH;
 
-require_once 'DB.php';
-require_once 'Solr.php';
 require_once 'DIH.php';
 
 function usage() { //{{{

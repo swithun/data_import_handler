@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace DIH;
 
+require_once 'Solr.php';
+require_once 'DB.php';
+
 class DIH {
 		private $xp;
 		private $db;
