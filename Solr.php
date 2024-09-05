@@ -22,30 +22,15 @@ class Solr {
     }
     //}}}
     
-    // add single document to Solr
-    private function addDocument(\SolrInputDocument $doc, string $pk) : string { //{{{
-        $id = $doc->getField($pk)->values[0];
-        
-        // add document
-        if (!$this->client->addDocument($doc)->success()) {
-            throw new \Exception('Problem adding document to Solr');
-        }
-        
-        return $id;
-    }
-    //}}}
-    
     // add array of documents to Solr
-    public function addDocuments(array $docs, string $pk) : array { //{{{
-        $ids = array();
-        
+    public function addDocuments(array $docs) { //{{{
         foreach ($docs as $doc) {
-            $ids[] = $this->addDocument($doc, $pk);
+						if (!$this->client->addDocument($doc)->success()) {
+								throw new \Exception('Problem adding document to Solr');
+						}
         }
         
         $this->client->commit();
-        
-        return $ids;
     }
     //}}}
 }
